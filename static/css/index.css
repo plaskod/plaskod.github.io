@@ -135,3 +135,19 @@ body {
 
 
 
+
+
+.piqard-hero{
+  height:500px;
+}
+
+.piqard-hero-container{
+  height: 100%;
+  width: 100%;
+}
+
+.piqard-hero-img{
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
+}
