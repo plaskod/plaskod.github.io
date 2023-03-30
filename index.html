@@ -254,6 +254,41 @@
   </div>
 <!-- End IR Concept -->
 
+
+<!-- Prompting -->
+<section class="prompting">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Prompting</h2>
+        <div class="content has-text-justified">
+          <p>
+            Prompting with in-context learning is a technique that allows to improve the performance of LLMs by providing 
+            a pattern containing instructions on the task along with examples of its solution. One of the basic prompt template
+            is shown below:
+          </p>
+
+<pre><code>Answer the question.
+  Q: What is the capital of Germany?
+  A: Berlin
+  Q: What is the capital of France?
+  A: Paris
+  Q: What is the capital of Poland?
+  A:  </code></pre>
+          <p>
+            As you may notice the prompt is divided into two parts. The first part is the instruction, which is the same for all questions 
+            and briefly describe the task. The second part is the list of examples, which is a pair of question and answer. 
+            The last example is left blank, so that the LLM can fill it with the answer to the question. Below we present a few examples of
+            more complex prompts, which are also implemented in PIQARD.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End prompting section -->
+
+
 <!-- Paper poster -->
 <section class="hero is-small is-light" id="pdf">
   <div class="hero-body">
