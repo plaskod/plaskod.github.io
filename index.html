@@ -170,7 +170,7 @@
         <h2 class="title is-3 has-text-centered">System overview</h2>
         <div class="content has-text-justified">
           <p>
-            PIQARD is an open-source Python library that allows researchers to experiment with
+            <span class="text-second-color">PIQARD</span> is an open-source Python library that allows researchers to experiment with
             prompting techniques and information retrieval and combine them with
             LLMs. This library includes pre-implemented components and also allows users to integrate their own methods. Following
             schema shows the three main components of PIQARD and how they interact with each other. 
@@ -203,7 +203,7 @@
         <div class="content has-text-justified">
           <p>
             The system has the ability to utilize language models that are hosted remotely and accessed through an API, in addition to ones that are deployed locally. 
-            In the experiments that were conducted, only language models that are publicly available, such as Bloom 176B and Cohere xlarge, which are open-source, were used. 
+            In the experiments that were conducted, only language models that are publicly available, such as <span class="text-second-color">Bloom 176B</span> and <span class="text-second-color">Cohere xlarge</span>, which are open-source, were used. 
             However, other language models that are more commercially-oriented could also be utilized.
           </p>
         </div>
@@ -218,6 +218,7 @@
       </div>
     </div>
   </div>
+</section>
 <!-- End LLM Concept -->
 
 <!-- IR Concept -->
@@ -244,6 +245,7 @@
       </div>
     </div>
   </div>
+</section>
 <!-- End IR Concept -->
 
 
@@ -255,7 +257,7 @@
         <h2 class="title is-3 has-text-centered">Prompting</h2>
         <div class="content has-text-justified">
           <p>
-            Prompting with in-context learning is a technique that allows to improve the performance of LLMs by providing 
+            <span class="text-second-color">Prompting</span> with <span class="text-second-color">in-context learning</span> is a technique that allows to improve the performance of LLMs by providing 
             a pattern containing instructions on the task along with examples of its solution. One of the basic prompt template
             is shown below:
           </p>
@@ -268,8 +270,8 @@
   Q: What is the capital of Poland?
   A:  </code></pre>
           <p>
-            As you may notice the prompt is divided into two parts. The first part is the instruction, which is the same for all questions 
-            and briefly describe the task. The second part is the list of examples, which is a pair of question and answer. 
+            As you may notice the <span class="text-second-color">prompt</span> is divided into two parts. The first part is the <span class="text-third-color">instruction</span>, which is the same for all questions 
+            and briefly describe the task. The second part is the <span class="text-third-color">list of examples</span>, which is a pair of question and answer. 
             The last example is left blank, so that the LLM can fill it with the answer to the question. Below we present a few examples of
             more complex prompts, which are also implemented in PIQARD.
           </p>
@@ -278,7 +280,45 @@
     </div>
   </div>
 </section>
-<!-- End prompting section -->
+
+
+<section class="prompting-react">
+  <div class="row">
+    <div class="column">
+      <div class="content padding-3">
+        <h2 class="title is-3 has-text-centered"><span class="text-second-color">ReAct</span> Prompting</h2>
+        <div class="content has-text-justified">
+          <p>
+            Reasoning and Acting (ReAct) is a technique that allows to improve the performance of LLMs by providing not only
+            a pattern containing instructions on the task along with examples of its solution, but also a set of actions that
+            the LLM could perform. Authors originally have proposed a set of actions that can be performed by the LLM, e.g. "Search",
+            which is searching for a specific information in the database. Additionaly model can provide a reasoning followed by
+            "Thought" and "Observation" mark. On the right we present an example of a prompt that uses ReAct technique and below 
+            is an example of use this technique with PIQARD. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="column">
+      <img class="prompting-image" src="static/images/react_prompt.png" alt="ReAct Prompting"/>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="prompting-react-piqard">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="use-case-html">
+            <iframe src="static/use_case_htmls/LLM_use_case.html" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End Prompting -->
+
 
 
 <!-- Paper poster -->
