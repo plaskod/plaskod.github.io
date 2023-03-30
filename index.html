@@ -202,12 +202,9 @@
         <h2 class="title is-3">Large Language Models</h2>
         <div class="content has-text-justified">
           <p>
-            Large Language Models (LLMs) have seen a surge in popularity due to their impressive results in natural language processing tasks,
-            but there are still challenges to be addressed. Prompting in the question
-            is a solution for some of them. Here, we present PIQARD, an
-            open-source Python library that allows researchers to experiment with
-            prompting techniques and information retrieval and combine them with
-            LLMs. This library includes pre-implemented components and also allows users to integrate their own methods.
+            The system has the ability to utilize language models that are hosted remotely and accessed through an API, in addition to ones that are deployed locally. 
+            In the experiments that were conducted, only language models that are publicly available, such as Bloom 176B and Cohere xlarge, which are open-source, were used. 
+            However, other language models that are more commercially-oriented could also be utilized.
           </p>
         </div>
         <div class="button-row">
@@ -227,14 +224,35 @@
   </div>
 <!-- End LLM Concept -->
 
-
-
-
-
-
-
-
-
+<!-- IR Concept -->
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Information retriever</h2>
+        <div class="content has-text-justified">
+          <p>
+            The information retrieval component of the system can access both remote and local resources. 
+            Remote resources can be accessed through APIs, while local resources can be deployed within the system.
+          </p>
+        </div>
+        <div class="button-row">
+          <a href="https://github.com/plaskod/piqard/tree/main/examples" class="variant-button center" title="Use one of implemented retrievers for your locally stored database!">Local custom search</a>
+          <a href="https://github.com/goldsmith/Wikipedia" class="variant-button center" title="Use Wikipedia API to retrieve data!">WikiAPI</a>
+          <a href="https://programmablesearchengine.google.com/about/" class="variant-button center" title="Create your own Google custom search engine!">Google custom search</a>
+          <a class="variant-button center" title="Add your own retriever!"><i style="font-size:24px" class="fa">&#xf067;</i></a>
+        </div>
+        <div class="item">
+          
+          <img class="use-case" src="static/images/piqard_hero.png" alt="Example of Use"/>
+          <h2 class="subtitle has-text-centered">
+            First image description.
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+<!-- End IR Concept -->
 
 <!-- Paper poster -->
 <section class="hero is-small is-light" id="pdf">
