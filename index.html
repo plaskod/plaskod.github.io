@@ -111,7 +111,16 @@
 
 <section class="piqard-hero">
   <div class="piqard-hero-container">
-    <img class="piqard-hero-img" src="static/images/piqard_hero.png" alt="MY ALT TEXT"/>
+    <picture class="piqard-hero-img">
+      <source 
+         media="(min-width: 768px)"
+         srcset="static/images/piqard_hero.png">
+      <source 
+         media="(min-width: 300px)"
+         srcset="static/images/piqard_hero_small.png">
+      <img src="static/images/piqard_hero.png" 
+      alt="PIQARD hero">
+   </picture>
   </div>
 
 </section>
@@ -155,6 +164,42 @@
 </section>
 <!-- End teaser video -->
 
+
+<hr>
+
+
+<!-- Concept  -->
+<section class="concept">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">System overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            PIQARD is an open-source Python library that allows researchers to experiment with
+            prompting techniques and information retrieval and combine them with
+            LLMs. This library includes pre-implemented components and also allows users to integrate their own methods. Following
+            schema shows the three main components of PIQARD and how they interact with each other. 
+          </p>
+        </div>
+        <div class="concept-image">
+          <img src="static/images/piqard_schema.png" alt="PIQARD concept image"/>
+        </div>
+        <p>
+          <span class="text-third-color">Question</span> given by user is first processed by the <span class="text-second-color">Information Retriver (IR)</span> component,
+          responsible for serching the provided local database or web sources for the most relevant documents. 
+          Then retrieved <span class="text-third-color">context</span> is passed along with the question to the <span class="text-second-color">Prompting</span> component.
+          This component is responsible for generating a specified prompt that will contain the question and the context. 
+          Finally, the <span class="text-second-color">Large Language Model</span> component is used to generate the <span class="text-third-color">answer</span> to the question,
+          which is based on the previously prepared prompt.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End concept section -->
+
+
 <!-- LLM Concept -->
 <section class="section is-light">
   <div class="container is-max-desktop">
@@ -189,67 +234,9 @@
 <!-- End LLM Concept -->
 
 
-<!-- Image carousel -->
-<!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section> -->
-<!-- End image carousel -->
 
 
 
-
-<!-- Youtube video -->
-<section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <!-- Paper video. -->
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- End youtube video -->
 
 
 
@@ -298,11 +285,6 @@
   </div>
 </footer>
 
-<!-- Statcounter tracking code -->
-  
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-    <!-- End of Statcounter Code -->
-
-  </body>
-  </html>
+</body>
+</html>
