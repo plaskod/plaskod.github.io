@@ -557,6 +557,154 @@ Thought: Let's think step by step.
 <!-- End concept section -->
 
 
+
+
+
+<!-- Experiments -->
+<section class="experiments padding-3">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3 has-text-centered">Experiments</h2>
+        <div class="content has-text-justified">
+          <p>
+            As part of our work, we conducted experiments aimed at testing the impact of certain prompting strategies on the quality of generated responses.
+             We chose two benchmarks, <span class="text-second-color">OpenBookQA</span> and <span class="text-second-color">HotpotQA</span>, to conduct these experiments.
+              The former consists of multiple-choice questions mainly focused on scientific facts, while the latter is composed of open-ended questions covering various domains.
+               For both benchmarks, the authors provided sets of documents that we used to search for context for each test question. Below we present the results of several choosen experiments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-5">Assessing the impact of the number <br/> of given task-solving examples in the prompt.</h2>
+        <div class="content has-text-justified">
+          <p>
+            The aim of the experiment is to test the impact of <span class="text-second-color">the number of given task-solving examples</span> in the prompt on the quality of generated responses.
+             The prepared prompt templates for both benchmarks consist of a simple instruction and several examples of task-solving, with the variable parameter being the number of examples within the range of <0,5>.
+          </p>
+        </div>
+
+        <div class="exp-1-1">
+          <img src="static/images/experiments/n_shot_openbook.png" alt="BLOOM n-shot"/>
+        </div>
+
+        <div class="exp-1-1">
+          <img src="static/images/experiments/n_shot_hotpot.png" alt="Cohere n-shot"/>
+        </div>
+
+
+        <div class="content has-text-justified">
+          <p>
+            The results of the experiment indicate that even with <span class="text-third-color">just one example</span> in the prompt, models are able to adapt their generated responses to the task, which <span class="text-third-color">increases their correctness</span>. 
+            For the OpenBookQA benchmark, a significant improvement of around 15 percentage points was observed for the BLOOM model. 
+            It is worth noting that as the number of examples in the prompt increases, the model responses improve, however, the trend is not always monotonic, and may begin to fluctuate at a similar level at some point or even decrease.
+            Interesting thing is that the <span class="text-third-color">Cohere model, despite having three times fewer parameters, achieved better results on the HotPotQA benchmark than Bloom thanks to prompting.</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-5">Assessment of the prompting strategy named <br/> Chain of Thought.</h2>
+        <div class="content has-text-justified">
+          <p>
+            The aim of the experiment is to test the prompting strategy called <span class="text-second-color">Chain of Thought</span>, which involves forcing the model to generate additional intermediate steps to the given response.
+            The prepared prompt templates for both benchmarks consist of a simple instruction and several examples of task-solving, with the variable parameter being the number of examples within the list [1, 3, 5].
+            </p>
+        </div>
+
+        <div class="exp-1-1">
+          <img src="static/images/experiments/cot_openbook.png" alt="BLOOM cot"/>
+        </div>
+
+        <div class="exp-1-1">
+          <img src="static/images/experiments/cot_hotpot.png" alt="Cohere cot"/>
+        </div>
+
+
+        <div class="content has-text-justified">
+          <p>
+            The results of the experiment once again indicate an <span class="text-third-color">improvement</span> in the response generation performance of both models <span class="text-third-color">with an increase in the number of examples</span> in the prompt.
+             It is worth noting that in this case, for the HotpotQA benchmark, the <span class="text-third-color">Cohere xlarge</span> model performed significantly better from the start, and impressively, for the OpenbookQA benchmark, <span class="text-third-color">despite initially worse results, it managed to surpass BLOOM with 5 examples.</span></p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-5">Assessment of the impact <br/>of the order of examples in the prompt.</h2>
+        <div class="content has-text-justified">
+          <p>
+            The aim of the experiment is to test <span class="text-second-color">the impact of the order of examples</span> on the results generated by language models. 
+            To conduct it, we prepared a template for the OpenBookQA benchmark, which consists of a simple instruction and five examples with one document provided as a fact, whose order was changed for each stage of the test.        </p>
+        </div>
+
+        <div class="exp-1-1">
+          <img src="static/images/experiments/order.png" alt="examples order"/>
+        </div>
+
+        <div class="content has-text-justified">
+          <p>
+            The results of the experiment indicate that <span class="text-third-color">the order of examples</span> in the prompt <span class="text-third-color">has an impact</span> on the response generated by the models. In our case, the difference is about 5%, which turns out to be significant given the maximum results presented. </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-4">General conclusions</h2>
+        <div class="content has-text-justified">
+          <p>
+            In summary of the conducted experiments, we conclude that the <span class="text-second-color">use of prompting strategies can have a positive impact</span> on the results achieved by natural language models.
+             However, they <span class="text-second-color">require the appropriate selection and preparation</span> of a special prompt depending on the model and the characteristics of the questions.
+              This makes it impossible to determine a universal solution that will work in every case. 
+              <br/><span style="font-size: 12px;">* The additional experiments beyond those presented above can be found in our engineering thesis. <a href="#pdf">[ET]</a></span>
+          </p> 
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- End of experiments section -->
+
+
+
+
+
+
+
+
+
 <!-- Paper poster -->
 <section class="hero is-small is-light" id="pdf">
   <div class="hero-body">
@@ -589,12 +737,12 @@ Thought: Let's think step by step.
 
 
 <!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>BibTex Code Here</code></pre>
     </div>
-</section>
+</section> -->
 <!--End BibTex citation -->
 
 
