@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>use_cases</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>basic_usage</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -36,6 +36,7 @@ span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 
 .highlight .m { color: var(--jp-mirror-editor-number-color) } /* Literal.Number */
 .highlight .s { color: var(--jp-mirror-editor-string-color) } /* Literal.String */
 .highlight .ow { color: var(--jp-mirror-editor-operator-color); font-weight: bold } /* Operator.Word */
+.highlight .pm { color: var(--jp-mirror-editor-punctuation-color) } /* Punctuation.Marker */
 .highlight .w { color: var(--jp-mirror-editor-variable-color) } /* Text.Whitespace */
 .highlight .mb { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Bin */
 .highlight .mf { color: var(--jp-mirror-editor-number-color) } /* Literal.Number.Float */
@@ -14464,10 +14465,6 @@ a.anchor-link {
   display: none;
 }
 
-.highlight  {
-  margin: 0.4em;
-}
-
 /* Input area styling */
 .jp-InputArea {
   overflow: hidden;
@@ -14477,9 +14474,26 @@ a.anchor-link {
   overflow: hidden;
 }
 
-.CodeMirror pre {
+.CodeMirror.cm-s-jupyter .highlight pre {
+/* weird, but --jp-code-padding defined to be 5px but 4px horizontal padding is hardcoded for pre.CodeMirror-line */
+  padding: var(--jp-code-padding) 4px;
   margin: 0;
-  padding: 0;
+
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+
+}
+
+.jp-OutputArea-output pre {
+  line-height: inherit;
+  font-family: inherit;
+}
+
+.jp-RenderedText pre {
+  color: var(--jp-content-font-color1);
+  font-size: var(--jp-code-font-size);
 }
 
 /* Using table instead of flexbox so that we can use break-inside property */
@@ -14523,6 +14537,10 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 /* Hiding the collapser by default */
 .jp-Collapser {
   display: none;
+}
+
+@page {
+    margin: 0.5in; /* Margin for each printed piece of paper */
 }
 
 @media print {
@@ -14572,33 +14590,44 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
     </script>
     <!-- End of mathjax configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
-
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h3 id="Can-chatGPT-transcribe-audio-to-text?">Can chatGPT transcribe audio to text?<a class="anchor-link" href="#Can-chatGPT-transcribe-audio-to-text?">&#182;</a></h3>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">piqard.utils.prompt_template</span> <span class="kn">import</span> <span class="n">PromptTemplate</span>
+<span class="kn">from</span> <span class="nn">piqard.information_retrievers</span> <span class="kn">import</span> <span class="n">WikiAPI</span>
+<span class="kn">from</span> <span class="nn">piqard.language_models</span> <span class="kn">import</span> <span class="n">BLOOM176bAPI</span>
+<span class="kn">from</span> <span class="nn">piqard.PIQARD</span> <span class="kn">import</span> <span class="n">PIQARD</span>
+
+<span class="n">prompt_template</span> <span class="o">=</span> <span class="n">PromptTemplate</span><span class="p">(</span><span class="s1">&#39;./chain_of_thought/cot_5_shot.txt&#39;</span><span class="p">)</span>
+<span class="n">llm</span> <span class="o">=</span> <span class="n">BLOOM176bAPI</span><span class="p">(</span><span class="n">stop_token</span><span class="o">=</span><span class="s2">&quot;|||&quot;</span><span class="p">)</span>
+<span class="n">wiki</span> <span class="o">=</span> <span class="n">WikiAPI</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+<span class="n">piqard</span> <span class="o">=</span> <span class="n">PIQARD</span><span class="p">(</span><span class="n">prompt_template</span><span class="o">=</span><span class="n">prompt_template</span><span class="p">,</span>
+                <span class="n">language_model</span><span class="o">=</span><span class="n">llm</span><span class="p">)</span>
+</pre></div>
+
+     </div>
 </div>
 </div>
 </div>
+
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">basic_prompt_template</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;Answer the question.</span>
-<span class="s2">Q: {{question}}</span>
-<span class="s2">A:</span>
-<span class="s2">&quot;&quot;&quot;</span>
-<span class="n">basic_prompt</span> <span class="o">=</span> <span class="n">PromptTemplate</span><span class="p">(</span><span class="n">template</span><span class="o">=</span><span class="n">basic_prompt_template</span><span class="p">)</span>
-<span class="n">cohere</span> <span class="o">=</span> <span class="n">CohereAPI</span><span class="p">(</span><span class="n">stop_token</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="n">cohere</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="n">basic_prompt</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">&quot;Can chatGPT transcribe audio to text?&quot;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">piqard</span><span class="p">(</span><span class="s2">&quot;Did Aristotle use a laptop?&quot;</span><span class="p">,</span> <span class="n">possible_answers</span><span class="o">=</span><span class="s2">&quot;yes no&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;answer&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;chain_trace&#39;</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -14612,17 +14641,85 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-
 <div class="jp-OutputArea-child">
-
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[6]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>- Aristotle was a Greek philosopher who lived in the 4th century BC
+- laptops were invented in the 1980s
+- Aristotle was not alive when laptops were invented
+So the final answer is: no
+<span class="ansi-white-fg">[base_prompt] Answer the question
 
+Question: The sun is responsible for
+Possible answers: A. puppies learning new tricks, B. children growing up and getting old, C. flowers wilting in a vase, D. plants sprouting, blooming and wilting
+Let&#39;s think step by step:
+- puppies can learn new tricks even in the dark or inside a house
+- children growing up and getting old is a natural cycle of life
+- flowers wilting in a vase could result from not suppyling enough water
+- sunlight is essential for plants for photosynthesis which make them grow, sprout, bloom and wilt when there&#39;s not enough of it
+So the final answer is: D. plants sprouting, blooming and wilting
+|||
 
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;Yes, chatGPT can transcribe audio to text.&#39;</pre>
+Question: A magnet will stick to
+Possible answers: A. a belt buckle, B. a wooden table, C. a plastic cup, D. a paper plate
+Let&#39;s think step by step:
+- a magnet will attract magnetic metals through magnetism
+- a belt buckle is usually made out of metal such as nickel, zinc or copper alloys which are magnetic
+- wood, plastic or paper are materials that do not contain metal and thus are not magnetic
+So the final answer is: A. a belt buckle
+|||
+
+Question: Which would be a logical hypothesis after viewing a white substance on the floor, with a yellow carton on the counter?
+Possible answers: A. milk was spilled, B. white juice was spilled, C. bleach was spilled, D. was an illusion
+Let&#39;s think step by step:
+- hypothesis means scientific guess about the cause and effect of an event
+- the yellow carton on the counter was most likely found in the kitchen
+- milk is a white liquid which is usually stored in carton boxes
+- white juice is not very specific
+- bleach is a white liquid but it&#39;s unlikely to be found on a counter
+- let&#39;s not consider the possiblity of being mistaken about seeing the white substance on the floor and it being just an illusion
+So the final answer is: A. milk was spilled
+|||
+
+Question: A heavier object
+Possible answers: A. requires less force to move, B. requires minimal effort to move, C. requires more muscle power to shift, D. requires a light touch to move
+Let&#39;s think step by step:
+- classical mechanics deals with the motion of bodies under the influence of forces or with the equilibrium of bodies when all forces are balanced
+- Newton&#39;s second law is F=ma, where F is the force applied to the body, m is mass and a is acceleration
+- consider a body with mass m1 and a heavier body of mass m2 = m1+1, the force required to move the heavier body needs to be greater according to the Newton&#39;s second law
+- force, effort, muscle power, touch in possible answers are the same words for making the object move
+So the final answer is: C. requires more muscle power to shift
+|||
+
+Question: Which is most harmful to a human?
+Possible answers: A. dynamite going off, B. reading email, C. balloons popping, D. opening a soda
+Let&#39;s think step by step:
+- a person may get killed if they&#39;re too close of a dynamite explosion, the schockwave can also damage hearing
+- reading an email is not dangerous, at worst the email contains a computer virus which does not directly impact human&#39;s health
+- balloons popping can be very irritating, but do not lead to hearing loss
+- it&#39;s very unlikely to be harmed while opening a soda, at worst you cut your finger on a piece of aluminium
+So the final answer is: A. dynamite going off
+|||
+
+Question: Did Aristotle use a laptop?
+Possible answers: yes no
+Let&#39;s think step by step:
+</span><span class="ansi-blue-fg">[thought] 
+- Aristotle was a Greek philosopher who lived in the 4th century BC
+- laptops were invented in the 1980s
+- Aristotle was not alive when laptops were invented
+So the final answer is: no
+
+</span><span class="ansi-green-fg">[finish] - Aristotle was a Greek philosopher who lived in the 4th century BC
+- laptops were invented in the 1980s
+- Aristotle was not alive when laptops were invented
+So the final answer is: no
+</span>
+</pre>
+</div>
 </div>
 
 </div>
@@ -14630,9 +14727,6 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 
 </div>
-
-</div>
-
 </body>
 
 

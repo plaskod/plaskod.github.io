@@ -257,6 +257,12 @@ body {
   background-color: #f5f5f5;
 }
 
+.prompting-self-aware{
+  width: 100%;
+  padding: 3rem 0;
+  background-color: #f5f5f5;
+}
+
 .padding-3{
   padding: 3rem;
 }
@@ -270,10 +276,14 @@ body {
 
 
 
+.prompting-example{
+  background-color: white;
+}
 
 
-
-
+.adv-examples{
+  background-color: #f5f5f5;
+}
 
 
 

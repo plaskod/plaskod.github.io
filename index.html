@@ -58,19 +58,11 @@
             </h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block">
-                <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Marcin Korcz</a>,</span>
-                <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Dawid Plaskowski</a>,</span>
-                  <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Mateusz Politycki</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="FOURTH AUTHOR PERSONAL LINK" target="_blank">Jerzy Stefanowski</a>,
-                  </span>
-                  <span class="author-block">
-                    <a href="FIFTH AUTHOR PERSONAL LINK" target="_blank">Alex Terentowicz</a>
-                  </span>
+              <span class="author-block text-third-color">Marcin Korcz, </span>
+                <span class="author-block text-third-color">Dawid Plaskowski,</span>
+                  <span class="author-block text-third-color">Mateusz Politycki,</span>
+                  <span class="author-block text-third-color">Jerzy Stefanowski,</span>
+                  <span class="author-block text-third-color">Alex Terentowicz</span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
@@ -200,11 +192,11 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Large Language Models</h2>
+        <h2 class="title is-4">Large Language Models</h2>
         <div class="content has-text-justified">
           <p>
             The system has the ability to utilize language models that are hosted remotely and accessed through an API, in addition to ones that are deployed locally. 
-            In the experiments that were conducted, only language models that are publicly available, such as <span class="text-second-color">Bloom 176B</span> and <span class="text-second-color">Cohere xlarge</span>, which are open-source, were used. 
+            In the experiments that were conducted, only language models that are easily available, such as open-source <span class="text-second-color">Bloom 176B</span> and <span class="text-second-color">Cohere xlarge</span>, were used. 
             However, other language models that are more commercially-oriented could also be utilized.
           </p>
         </div>
@@ -227,11 +219,12 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">Information retriever</h2>
+        <h2 class="title is-4">Information retriever</h2>
         <div class="content has-text-justified">
           <p>
             The information retrieval component of the system can access both remote and local resources. 
-            Remote resources can be accessed through APIs, while local resources can be deployed within the system.
+            Remote resources can be accessed through APIs, while local resources can be deployed within the system and 
+            searched using semantic and lexical algorithms, thanks to <span class="text-second-color">Annoy</span>, <span class="text-second-color">FAISS</span> and <span class="text-second-color">BM25</span> libraries.
           </p>
         </div>
         <div class="button-row">
@@ -255,7 +248,7 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3 has-text-centered">Prompting</h2>
+        <h2 class="title is-4 has-text-centered">Prompting</h2>
         <div class="content has-text-justified">
           <p>
             <span class="text-second-color">Prompting</span> with <span class="text-second-color">in-context learning</span> is a technique that allows to improve the performance of LLMs by providing 
@@ -290,11 +283,11 @@
         <h2 class="title is-3 has-text-centered"><span class="text-second-color">ReAct</span> Prompting</h2>
         <div class="content has-text-justified">
           <p>
-            Reasoning and Acting (ReAct) is a technique that allows to improve the performance of LLMs by providing not only
+            Reasoning and Acting (ReAct)<a href="#ref-react">[1]</a> is a technique that allows to improve the performance of LLMs by providing not only
             a pattern containing instructions on the task along with examples of its solution, but also a set of actions that
-            the LLM could perform. Authors originally have proposed a set of actions that can be performed by the LLM, e.g. "Search",
+            the LLM could perform. Authors originally have proposed a set of actions that can be performed by the LLM, e.g. <span class="text-third-color">"Search"</span>,
             which is searching for a specific information in the database. Additionaly model can provide a reasoning followed by
-            "Thought" and "Observation" mark. On the right we present an example of a prompt that uses ReAct technique and below 
+            <span class="text-third-color">"Thought"</span> and <span class="text-third-color">"Observation"</span> mark. On the right we present an example of a prompt that uses ReAct technique and below 
             is an example of use this technique with PIQARD. 
           </p>
         </div>
@@ -311,25 +304,41 @@ Observation: Leonid Anatolievich Levin is a Soviet-American mathematician and co
 Thought 3: Leonid Levin is a mathematician and computer scientist. So Pavel Urysohn and Leonid Levin have the same type of work.
 Action 3: Finish[yes]
 
+...
 --- N more examples ---
+...
 
 Question: <span class="text-second-color">{{question}}</span>
         </code></pre>
     </div>
   </div>
+
+</section>
+
+<section class="prompting-example">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <div class="use-case-html" id="use-case-react">
+            <iframe src="static/use_case_htmls/react_example.html" scrolling="no"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section class="prompting-self-aware">
   <div class="row-reverse">
     <div class="column">
       <div class="content padding-3">
         <h2 class="title is-3 has-text-centered"><span class="text-second-color">Self-aware</span> Prompting</h2>
         <div class="content has-text-justified">
           <p>
-            !!! change description !!!
-            Reasoning and Acting (ReAct) is a technique that allows to improve the performance of LLMs by providing not only
-            a pattern containing instructions on the task along with examples of its solution, but also a set of actions that
-            the LLM could perform. Authors originally have proposed a set of actions that can be performed by the LLM, e.g. "Search",
-            which is searching for a specific information in the database. Additionaly model can provide a reasoning followed by
-            "Thought" and "Observation" mark. On the right we present an example of a prompt that uses ReAct technique and below 
-            is an example of use this technique with PIQARD. 
+            Self-aware is based on a simple assumption that LLMs can answer some questions solely based on the learned knowledge from training data.
+             Therefore, there is <span class="text-third-color">no need for additional information retrieval</span> that could potentially introduce unnecessary bias by forcing the model to focus only on the narrow content provided by the IR
+            module, especially for basic and trivial questions. Usually it should be used with other prompting techniques, e.g. ReAct. 
+             On the left we present an example of a prompt used for Self-aware technique and below is an example of use this technique with PIQARD.
           </p>
         </div>
       </div>
@@ -358,20 +367,31 @@ Input: <span class="text-second-color">{{question}}</span>
 Output:
       </code></pre>
     </div>
+  </div>  
+
+
+<section class="prompting-example">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="use-case-html" id="use-case-selfaware">
+          <iframe src="static/use_case_htmls/self_aware_example.html" scrolling="no"></iframe>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
   <div class="row">
     <div class="column">
       <div class="content padding-3">
         <h2 class="title is-3 has-text-centered"><span class="text-second-color">Chain of Thought</span> Prompting</h2>
         <div class="content has-text-justified">
           <p>
-            !!! change description !!!
-            Reasoning and Acting (ReAct) is a technique that allows to improve the performance of LLMs by providing not only
-            a pattern containing instructions on the task along with examples of its solution, but also a set of actions that
-            the LLM could perform. Authors originally have proposed a set of actions that can be performed by the LLM, e.g. "Search",
-            which is searching for a specific information in the database. Additionaly model can provide a reasoning followed by
-            "Thought" and "Observation" mark. On the right we present an example of a prompt that uses ReAct technique and below 
-            is an example of use this technique with PIQARD. 
+           Chain of Thought<a href="#ref-cot">[2]</a> prompting is a special prepared prompt that contain not only examples of questions with their answers,
+            but also a <span class="text-third-color">step-by-step thought process</span> that the LLM should follow to answer the question.
+            Therefore, the expected output of the model includes not only the final answer but also the generated sequence of steps that led to it.
+            On the right we present an example of a prompt that uses Chain of Thought technique and below is an example of use this technique with PIQARD.
           </p>
         </div>
       </div>
@@ -386,7 +406,9 @@ into the High Plains. High Plains rise in elevation from around 1,800 to
 7,000 ft, so the answer is 1,800 to 7,000 ft.
 Answer: 1,800 to 7,000 ft
 
+...
 --- N more examples ---
+...
 
 Question: <span class="text-second-color">{{question}}</span>
 Thought: Let's think step by step.
@@ -395,25 +417,25 @@ Thought: Let's think step by step.
   </div>
 </section>
 
-<section>
-  <div class="prompting-react-piqard">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <div class="use-case-html">
-            <iframe src="static/use_case_htmls/LLM_use_case.html" scrolling="no"></iframe>
-          </div>
+<section class="prompting-example">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <div class="use-case-html" id="use-case-cot">
+          <iframe src="static/use_case_htmls/cot_example.html" scrolling="no"></iframe>
         </div>
       </div>
     </div>
   </div>
 </section>
+
+
 <!-- End Prompting -->
 
 
 
 <!-- Examples of use  -->
-<section class="concept">
+<section class="adv-examples padding-3">
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-four-fifths">
@@ -425,24 +447,31 @@ Thought: Let's think step by step.
             if it is not justyfied by any of training data.
           </p>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-
-
-
-        <h4 class="title is-5 has-text-centered">Can chatGPT transcribe audio to text?</h4>
-        <div class="content has-text-justified">
+<section class="concept">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-four-fifths">
+      <h4 class="title is-5 has-text-centered">Can chatGPT transcribe audio to text?</h4>
+      <div class="content has-text-justified">
           <p>
             The proposed system with <span class="text-second-color">Self-aware</span> prompting technique provided a correct answer and sequence of steps, which were performed by the model.
             However, the answer generated by a simple language model query is incorrect.
             Moreover, whether it sounds positive or negative, there is no basis for it, as the training set could not contain information about the chatbot ChatGPT, which was created after the model was trained (November 30, 2022).
           </p>
-        </div>
-        <div class="use-case-html" id="use-case-chatgpt">
-          <h4 class="use-case-subtitle">Wrong answer with basic prompt:</h4>
-          <iframe src="static/use_case_htmls/adv_use_chatgpt.html" scrolling="no"></iframe>
-        </div>
+      </div>
+
+
+      <div class="use-case-html" id="use-case-chatgpt">
+        <h4 class="use-case-subtitle">Wrong answer with basic prompt:</h4>
+        <iframe src="static/use_case_htmls/adv_use_chatgpt.html" scrolling="no"></iframe>
+      </div>
         
-        <div>empty</div>
+        <div style="padding-top: 50px;"> </div>
         <h4 class="use-case-subtitle">Correct answer with Self-aware prompt:</h4>
         <div class="content has-text-justified">
           <div class="container">
@@ -470,11 +499,57 @@ Thought: Let's think step by step.
            </div>
         </div>
       </div>
-            
-        </div>
+      </div>   
+
+      <h4 class="title is-5 has-text-centered" style="padding-top: 3rem;">Who is the current CEO of Twitter?</h4>
+      <div class="content has-text-justified">
+        <p>
+          In this case the we have similar situation as in previous example.
+          The proposed system with <span class="text-second-color">Self-aware</span> prompting technique provided a correct answer and sequence of steps, which were performed by the model.
+          However, the answer generated by a simple language model query is incorrect, but it is more plausible than in previous example, because Jack Dorsey was the CEO of Twitter
+          before Elon Musk (end of 2023).
+
+        </p>
+      </div>
+      <div class="use-case-html" id="use-case-elon">
+        <h4 class="use-case-subtitle">Wrong answer with basic prompt:</h4>
+        <iframe src="static/use_case_htmls/adv_use_elon.html" scrolling="no"></iframe>
+      </div>
+      
+      <div style="padding-top: 50px;"> </div>
+
+      <h4 class="use-case-subtitle">Correct answer with Self-aware prompt:</h4>
+      <div class="content has-text-justified">
+        <div class="container">
+          <div id="results-carousel" class="carousel results-carousel">
+           <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/use_cases/elon/elon_1.png" alt="MY ALT TEXT"/>
+            <h2 class="subtitle has-text-centered">
+              First image description.
+            </h2>
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/use_cases/elon/elon_2.png" alt="MY ALT TEXT"/>
+            <h2 class="subtitle has-text-centered">
+              Second image description.
+            </h2>
+          </div>
+          <div class="item">
+            <!-- Your image here -->
+            <img src="static/images/use_cases/elon/elon_3.png" alt="MY ALT TEXT"/>
+            <h2 class="subtitle has-text-centered">
+             Third image description.
+           </h2>
+         </div>
+      </div>
+    </div>
 
 
 
+
+      </div>
       </div>
     </div>
   </div>
@@ -495,6 +570,22 @@ Thought: Let's think step by step.
     </div>
   </section>
 <!--End paper poster -->
+
+
+
+
+<!--References citation -->
+<section class="section">
+  <div class="container is-max-desktop content">
+    <h2 class="title">References</h2>
+    <p id="ref-react">[1] Shunyu Yao, Jeffrey Zhao, Dian Yu, Nan Du, et al. React: Synergizing reasoning and acting in language models. <a href="https://arxiv.org/abs/2210.03629">https://arxiv.org/abs/2210.03629</a>, 2022.</p>
+    <p id="ref-cot">[2] Aakanksha Chowdhery, Sharan Narang, Jacob Devlin, Maarten Bosma, et al. PaLM: Scaling language modeling with pathways. <a href="https://arxiv.org/abs/2204.02311">https://arxiv.org/abs/2204.02311</a>, 2022.</p>
+  </div>
+</section>
+<!--End References citation -->
+
+
+
 
 
 <!--BibTex citation -->
